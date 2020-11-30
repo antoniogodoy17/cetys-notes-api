@@ -11,7 +11,6 @@ const { isAuthenticated } = require('./middlewares/auth.middleware');
 !process.env.NODE_ENV ? dotenv.config() : 'production';
 
 const db = require('./config/db.config');
-
 const app = express();
 
 app.use(bodyParser.json());
