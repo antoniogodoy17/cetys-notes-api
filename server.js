@@ -21,7 +21,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/notes', isAuthenticated, noteRoutes);
 
 app.use('*', (req, res, next) => {
-    return res.statusCode(200).send({ message: 'This is a fallback route.', statusCode: 200, data: { } });
+    return res.status(200).send({ message: 'This is a fallback route.', statusCode: 200, data: { } });
 });
 
 db.connect().then(() => {
