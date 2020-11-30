@@ -20,6 +20,10 @@ app.use(cors());
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', isAuthenticated, noteRoutes);
 
+app.use('*', (req, res, next) => {
+    return res.statusCode(200).send({ message: 'This is a fallback route.', statusCode: 200, data: { } });
+});
+
 db.connect().then(() => {
     console.log('Mongo connection initialized.');
     app.listen(process.env.SERVER_PORT || 3000, () => console.log(`Server listening on PORT ${process.env.SERVER_PORT}.`) );
